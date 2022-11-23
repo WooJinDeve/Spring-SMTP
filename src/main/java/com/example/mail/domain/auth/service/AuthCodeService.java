@@ -1,6 +1,7 @@
 package com.example.mail.domain.auth.service;
 
 import com.example.mail.domain.auth.domain.AuthCode;
+import com.example.mail.domain.auth.dto.VerificationReqDto;
 import com.example.mail.domain.auth.repository.AuthCodeRepository;
 import com.example.mail.util.AuthEncoder;
 import lombok.RequiredArgsConstructor;
@@ -23,10 +24,10 @@ public class AuthCodeService {
         authCodeRepository.save(authCode);
     }
 
-    public void verifyCode(String email, String code){
-        String authSerialNumber = authEncoder.encode(email);
+    public void verifyCode(VerificationReqDto verificationReqDto){
+        String authSerialNumber = authEncoder.encode(verificationReqDto.getEmail().getEmail());
         AuthCode authCode = authCodeRepository.getByAuthSerialNumber(authSerialNumber);
-        authCode.verify(code);
+        authCode.verify(verificationReqDto.getCode());
         authCode.verifyTime(LocalDateTime.now());
     }
 }

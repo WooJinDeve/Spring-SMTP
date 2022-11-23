@@ -30,17 +30,23 @@ public class AuthCode {
 
     @CreatedDate
     @Column(updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime createAt;
 
     @LastModifiedDate
     private LocalDateTime updateAt;
 
     @Builder
-    public AuthCode(String code, String authSerialNumber, LocalDateTime createdAt, LocalDateTime updateAt) {
+    public AuthCode(String code, String authSerialNumber, LocalDateTime createAt, LocalDateTime updateAt) {
         this.code = code;
         this.authSerialNumber = authSerialNumber;
-        this.createdAt = createdAt;
+        this.createAt = createAt;
         this.updateAt = updateAt;
+    }
+
+    @Builder
+    public AuthCode(String code, String authSerialNumber) {
+        this.code = code;
+        this.authSerialNumber = authSerialNumber;
     }
 
     public static AuthCode of(String code, String authSerialNumber) {

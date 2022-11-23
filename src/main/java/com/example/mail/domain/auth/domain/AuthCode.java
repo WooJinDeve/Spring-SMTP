@@ -1,4 +1,4 @@
-package com.example.mail.domain.mail.domain;
+package com.example.mail.domain.auth.domain;
 
 import com.example.mail.global.exception.InvalidateException;
 import lombok.Builder;

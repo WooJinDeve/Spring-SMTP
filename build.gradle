@@ -19,14 +19,28 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springdoc:springdoc-openapi-ui:1.6.13'
+    //spring lib
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
+
+    //mail
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+    //database
     runtimeOnly 'com.h2database:h2'
+
+    //controller api test
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.13'
+
+    //lombok
+    compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    //test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //비밀번호 암호화 라이브러리
+    implementation 'org.mindrot:jbcrypt:0.4'
 }
 
 tasks.named('test') {
